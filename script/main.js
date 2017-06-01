@@ -1,0 +1,39 @@
+require.config({
+    baseUrl:'script/',
+    paths:{
+        //一些库文件
+        'jquery':'lib/jquery-1.11.3',
+        'angular':'lib/angular.min',
+        'ui.router':'lib/angular-ui-router',
+        'bootstrap':'lib/bootstrap',
+        'animate':'lib/angular-animate',
+        //js文件
+        'aps':'app',
+
+        //等等其他框架
+    },
+    //框架依赖
+    shim:{
+        'animate':{
+            deps:['angular',"ui.router"],
+            exports:'animate'
+        },
+        'bootstrap':{
+            deps:['jquery'],
+            exports:'bootstrap'
+        },
+        'angular':{
+            exports: 'angular'
+        },
+        'ui.router':{
+            deps:['angular'],
+            exports:'ui.router'
+        },
+        'aps':{
+            deps:['jquery','animate','bootstrap','angular','ui.router'],
+            exports:'aps'
+        },
+
+    }
+});
+require(['aps']);
